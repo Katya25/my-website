@@ -1,0 +1,601 @@
+/* СБРОС */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: #000;
+  /* Фон по умолчанию — чёрный, для ретро-стиля */
+  color: #fff;
+  font-family: 'Press Start 2P', monospace;
+}
+
+/* Контейнер для секций */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* АНИМИРОВАННЫЙ ФОН: ЗВЁЗДНОЕ ПОЛЕ */
+#starfield,
+#starfield2 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  pointer-events: none;
+  /* чтобы не мешало кликам */
+  z-index: 0;
+}
+
+#starfield::before,
+#starfield2::before {
+  content: '';
+  position: absolute;
+  width: 2000px;
+  height: 2000px;
+  /* Асимметричный и полупрозрачный градиент */
+  background: radial-gradient(rgba(255, 255, 255, 0.045) 10%, rgba(255, 255, 255, 0) 80%);
+  /*background: radial-gradient(ellipse at 45% 50%, rgba(255, 255, 255, 0.15) 10%, rgba(255, 255, 255, 0) 80%);*/
+  animation: star-animation 10s linear infinite;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Второй слой крутится дольше и чуть прозрачнее */
+#starfield2::before {
+  animation-duration: 20s;
+  opacity: 0.5;
+}
+
+@keyframes star-animation {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg) scale(1);
+  }
+
+  50% {
+    transform: translate(-50%, -50%) rotate(180deg) scale(1.05);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg) scale(1);
+  }
+}
+
+.social-links a {
+  display: inline-block;
+  margin: 10px;
+  padding: 10px 20px;
+  background: #0ff;
+  color: #000;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+
+.social-links a:hover {
+  background: #ff00ff;
+  color: #fff;
+}
+
+
+/* ===== ПОЛОСКА МАТРИЦЫ (с фиолетовым цветом и плавным «хвостиком») ===== */
+.matrix-line {
+  position: fixed;
+  top: -150px;
+  /* Начинаем за верхним краем экрана */
+  color: rgba(255, 0, 255, 0.765);
+  /* Фиолетовый цвет символов */
+  font-size: 1rem;
+  /* Размер шрифта */
+  line-height: 1.2;
+  /* Вертикальное расстояние между символами */
+  writing-mode: vertical-rl;
+  /* Пишем символы сверху вниз */
+  pointer-events: none;
+  z-index: 99999;
+  opacity: 1;
+
+  /* Анимация падения (сверху вниз) + плавное исчезновение (opacity: 0) */
+  animation: matrixLineFall 2.5s linear forwards;
+
+  /* МАСКА, чтобы именно верхняя часть была «прозрачной» */
+  /* (Синтаксис для современных браузеров + -webkit- для Safari) */
+  -webkit-mask-image: linear-gradient(to bottom,
+      rgba(0, 0, 0, 1) 0%,
+      /* чёрный => "невидимо" в маске */
+      rgba(255, 255, 255, 1) 30%,
+      /* к 30% плавный переход к белому => "видимо" */
+      rgba(255, 255, 255, 1) 100%);
+  mask-image: linear-gradient(to bottom,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(255, 255, 255, 1) 30%,
+      rgba(255, 255, 255, 1) 100%);
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
+/* Анимация падения + исчезновения */
+@keyframes matrixLineFall {
+  0% {
+    top: -150px;
+    /* Начинаем за верхним краем */
+    opacity: 1;
+  }
+
+  100% {
+    top: 110%;
+    /* Уходим за нижний край экрана */
+    opacity: 0;
+    /* Исчезаем полностью */
+  }
+}
+
+
+
+
+/* ШАПКА */
+header {
+  position: fixed;
+  width: 100%;
+  background: #111;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  box-shadow: 0 0 10px #ff00ff;
+}
+
+header nav.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+.logo {
+  position: relative;
+  font-size: 1.2rem;
+  color: #0ff;
+  cursor: default;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #fff;
+  transition: color 0.3s;
+}
+
+nav ul li a:hover {
+  color: #0ff;
+}
+
+/* ГЛИЧ-ЭФФЕКТ ДЛЯ ЛОГОТИПА */
+.glitch {
+  font-weight: bold;
+  position: relative;
+  display: inline-block;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  clip: rect(0, 900px, 0, 0);
+}
+
+.glitch::before {
+  animation: glitch-top 2s infinite linear alternate-reverse;
+  color: #ff00ff;
+}
+
+.glitch::after {
+  animation: glitch-bottom 2s infinite linear alternate-reverse;
+  color: #0ff;
+}
+
+@keyframes glitch-top {
+  0% {
+    clip: rect(86px, 9999px, 90px, 0);
+    transform: translate(-2px, -2px);
+  }
+
+  20% {
+    clip: rect(30px, 9999px, 60px, 0);
+    transform: translate(2px, 2px);
+  }
+
+  40% {
+    clip: rect(10px, 9999px, 80px, 0);
+    transform: translate(-2px, -1px);
+  }
+
+  60% {
+    clip: rect(50px, 9999px, 90px, 0);
+    transform: translate(2px, 0);
+  }
+
+  80% {
+    clip: rect(70px, 9999px, 100px, 0);
+    transform: translate(-1px, 2px);
+  }
+
+  100% {
+    clip: rect(20px, 9999px, 60px, 0);
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes glitch-bottom {
+  0% {
+    clip: rect(10px, 9999px, 70px, 0);
+    transform: translate(2px, 0);
+  }
+
+  20% {
+    clip: rect(40px, 9999px, 80px, 0);
+    transform: translate(-2px, 2px);
+  }
+
+  40% {
+    clip: rect(20px, 9999px, 90px, 0);
+    transform: translate(1px, -1px);
+  }
+
+  60% {
+    clip: rect(60px, 9999px, 100px, 0);
+    transform: translate(-1px, 2px);
+  }
+
+  80% {
+    clip: rect(80px, 9999px, 90px, 0);
+    transform: translateY(-1px);
+  }
+
+  100% {
+    clip: rect(30px, 9999px, 60px, 0);
+    transform: translate(0, 0);
+  }
+}
+
+/* Герой-секция */
+#hero {
+  position: relative;
+  height: 100vh;
+  /* на всю высоту экрана */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 1;
+  padding-top: 60px;
+  /* чтобы контент не прятался под шапку */
+  overflow: hidden;
+  /* скрываем то, что выходит за пределы (город) */
+  background: #000;
+  /* или звёздный фон, градиент, и т.д. */
+}
+
+/* Контент (тайпрайтер, subtitle, кнопка) */
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+  margin-bottom: 10%;
+  position: relative;
+  /* чтобы z-index работал */
+  z-index: 10;
+  /* поверх слоёв города */
+}
+
+/* Текст анимации печатной машинки */
+.typewriter {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #ff00ff;
+}
+
+/* Подзаголовок */
+.subtitle {
+  font-size: 0.8rem;
+  color: #fff;
+  margin-bottom: 30px;
+}
+
+/* Кнопка "PRESS START" */
+.btn-press-start {
+  display: inline-block;
+  padding: 15px 30px;
+  background: #0ff;
+  color: #000;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background 0.3s;
+  font-size: 0.8rem;
+}
+
+.btn-press-start:hover {
+  background: #ff00ff;
+  color: #fff;
+}
+
+/* Контейнер для многослойного города */
+/* Контейнер для многослойного города */
+/* Контейнер для многослойного города */
+.city-layers {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* можно без overflow, т.к. #hero уже hidden */
+}
+
+/* Каждый слой PNG */
+.city-layer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+  /* чтобы клики проходили сквозь */
+}
+
+
+/* (Опционально) задать разный z-index для каждого слоя, 
+   если нужны перекрытия:*/
+#layer0 {
+  height: 100vh;
+  z-index: 0;
+
+}
+
+#layer1 {
+  z-index: 1;
+}
+
+#layer2 {
+  z-index: 2;
+
+}
+
+#layer3 {
+  z-index: 3;
+
+}
+
+#layer4 {
+  z-index: 4;
+
+}
+
+#layer5 {
+  z-index: 5;
+}
+
+#layer6 {
+  z-index: 6;
+}
+
+#layer7 {
+  z-index: 7;
+  opacity: 0.5;
+}
+
+
+
+/* СЕКЦИЯ "ОБО МНЕ" */
+#about {
+  padding: 100px 0;
+  text-align: center;
+}
+
+#about h2 {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #0ff;
+}
+
+#about p {
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+  font-size: 0.8rem;
+}
+
+/* СЕКЦИЯ "ПРОЕКТЫ" */
+/* Контейнер модалки (скрыт по умолчанию) */
+.modal {
+  display: none;
+  /* изначально невидима */
+  position: fixed;
+  z-index: 9999;
+  /* поверх всего */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  /* если контент большой, появляется скролл */
+  background-color: rgba(0, 0, 0, 0.8);
+  /* полупрозрачный тёмный фон */
+}
+
+/* Внутренний блок (контент модалки) */
+.modal-content {
+  background-color: #111;
+  margin: 10% auto;
+  padding: 20px;
+  border: 2px solid #0ff;
+  width: 80%;
+  max-width: 600px;
+  position: relative;
+  border-radius: 8px;
+  color: #fff;
+}
+
+/* Кнопка "×" для закрытия */
+.close {
+  color: #fff;
+  float: right;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.close:hover {
+  color: #0ff;
+}
+
+/* Стили для карточек, как раньше */
+#projects {
+  padding: 100px 20px;
+  text-align: center;
+}
+
+#projects h2 {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  color: #0ff;
+  /* или любой другой цвет */
+}
+
+/* Flex-контейнер для карточек */
+.projects-flex {
+  display: flex;
+  flex-wrap: wrap;
+  /* переносим карточки на новую строку при нехватке места */
+  justify-content: center;
+  /* выравниваем карточки по центру горизонтали */
+  gap: 20px;
+  /* расстояние между карточками */
+}
+
+/* Каждая карточка */
+.project-card {
+  width: 300px;
+  /* фиксированная ширина (чтобы было ровно 3 в первом ряду) */
+  background: #111;
+  border: 2px solid #0ff;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.project-card:hover {
+  transform: translateY(-5px) rotate(-1deg);
+}
+
+.project-card img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.project-card h3 {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  color: #ff00ff;
+}
+
+.project-card p {
+  font-size: 0.8rem;
+  color: #ccc;
+}
+
+
+
+
+
+
+/* СЕКЦИЯ "КОНТАКТЫ" */
+#contact {
+  padding: 100px 0;
+  text-align: center;
+}
+
+#contact h2 {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  color: #0ff;
+}
+
+#contact form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#contact form input,
+#contact form textarea {
+  background: #111;
+  border: 2px solid #ff00ff;
+  color: #fff;
+  padding: 10px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.8rem;
+  border-radius: 4px;
+}
+
+#contact form button {
+  padding: 15px 30px;
+  background: #ff00ff;
+  color: #fff;
+  border: none;
+  font-size: 0.8rem;
+  font-family: 'Press Start 2P', monospace;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#contact form button:hover {
+  background: #0ff;
+  color: #000;
+}
+
+/* ПОДВАЛ */
+footer {
+  background: #111;
+  padding: 20px 0;
+  text-align: center;
+  border-top: 2px solid #ff00ff;
+}
+
+footer p {
+  font-size: 0.7rem;
+  color: #fff;
+  margin: 0;
+}
+
+/* АДАПТИВНОСТЬ */
+@media (max-width: 768px) {
+  .typewriter {
+    font-size: 1.2rem;
+  }
+
+  #about,
+  #projects,
+  #contact {
+    padding: 60px 0;
+  }
+}

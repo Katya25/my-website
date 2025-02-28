@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Retro Game Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Подключаем ретро-шрифт -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+
+  <!-- Стили -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Фоновая анимация (звёзды) -->
+  <div id="starfield"></div>
+  <div id="starfield2"></div>
+
+  <!-- Шапка -->
+  <header>
+    <nav class="container">
+      <div class="logo glitch" data-text="KATE BALEIKO">
+        KATE BALEIKO
+      </div>
+      <ul>
+        <li><a href="#hero">HOME</a></li>
+        <li><a href="#about">ABOUT</a></li>
+        <li><a href="#projects">PROJECTS</a></li>
+        <li><a href="#contact">CONTACT</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Герой-секция -->
+  <section id="hero">
+    <!-- Ваш существующий блок с текстом -->
+    <div class="hero-content">
+      <h1 class="typewriter" id="typewriter"></h1>
+      <p class="subtitle">Front-End Dev • Pixel Art Lover • Retro Enthusiast</p>
+      <a href="#projects" class="btn-press-start">PRESS START</a>
+    </div>
+
+
+    <!-- Новый блок со слоями города -->
+    <div class="city-layers">
+      <img src="img/0.png" alt="City Layer 0" class="city-layer" id="layer0" />
+      <img src="img/1.png" alt="City Layer 1" class="city-layer" id="layer1" />
+      <img src="img/2.png" alt="City Layer 2" class="city-layer" id="layer2" />
+      <img src="img/3.png" alt="City Layer 3" class="city-layer" id="layer3" />
+      <img src="img/4.png" alt="City Layer 4" class="city-layer" id="layer4" />
+      <img src="img/5.png" alt="City Layer 5" class="city-layer" id="layer5" />
+      <!--<img src="img/6.png" alt="City Layer 6" class="city-layer" id="layer6" />
+      <img src="img/7.png" alt="City Layer 7" class="city-layer" id="layer7" /> -->
+    </div>
+  </section>
+
+
+  <!-- Секция "Обо мне" -->
+  <section id="about" class="container">
+    <h2>ABOUT ME</h2>
+    <p style="text-align: justify;">
+      I love Vovochka I love VovochkaI love Vovochka I love Vovochka I love Vovochka I love Vovochka I love Vovochka I
+      love Vovochka I love Vovochka I love VovochkaI love Vovochka I love Vovochka I love Vovochka I love Vovochka I
+      love Vovochka I love Vovochka I love Vovochka I love VovochkaI love Vovochka I love Vovochka I love Vovochka I
+      love Vovochka I love Vovochka I love Vovochka
+
+      <br><br>I love Vovochka I love VovochkaI love Vovochka I love Vovochka I love Vovochka I love Vovochka I love
+      Vovochka I love VovochkaI love Vovochka I love VovochkaI love Vovochka I love Vovochka I love Vovochka I love
+      Vovochka I love Vovochka I love Vovochka
+
+      <br><br>I love Vovochka I love VovochkaI love Vovochka I love Vovochka I love Vovochka I love Vovochka I love
+      Vovochka I love Vovochka
+    </p>
+  </section>
+
+  <!-- Секция "Проекты" -->
+  <section id="projects" class="container">
+    <h2>PROJECTS</h2>
+    <div class="projects-flex">
+      <!-- Карточка 1 -->
+      <div class="project-card" onclick="openModal('modal1')">
+        <img src="img/piano2.png" alt="Project 1" />
+        <h3>Jamboxx Infinite</h3>
+        <p>Team leader, AI, Motion Input</p>
+      </div>
+      <!-- Модальное окно для проекта 1 -->
+      <div id="modal1" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeModal('modal1')">&times;</span>
+          <h2>Project 1 (подробности)</h2>
+          <p>Здесь можно разместить более детальное описание,
+            технологии, ссылки, скриншоты и т. д.</p>
+        </div>
+      </div>
+
+      <!-- Карточка 2 -->
+      <div class="project-card" onclick="openModal('modal2')">
+        <img src="img/Student.png" alt="Project 2" />
+        <h3>Student Grade Management</h3>
+        <p>Java Spring Boot, React</p>
+      </div>
+      <!-- Модальное окно для проекта 2 -->
+      <div id="modal2" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeModal('modal2')">&times;</span>
+          <h2>Project 2 (подробности)</h2>
+          <p>Более детальное описание, ссылки, скриншоты и т. д.</p>
+        </div>
+      </div>
+
+      <!-- Карточка 3 -->
+      <div class="project-card" onclick="openModal('modal3')">
+        <img src="img/Bio.png" alt="Project 3" />
+        <h3>Bioreactor Control System</h3>
+        <p>Team work, Arduino</p>
+      </div>
+      <!-- Модальное окно для проекта 3 -->
+      <div id="modal3" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeModal('modal3')">&times;</span>
+          <h2>Project 3 (подробности)</h2>
+          <p>Здесь можно разместить более детальное описание,
+            технологии, ссылки, скриншоты и т. д.</p>
+        </div>
+      </div>
+
+      <!-- Карточка 4 -->
+      <div class="project-card" onclick="openModal('modal4')">
+        <img src="img/city.png" alt="Project 4" />
+        <h3>This website</h3>
+        <p>JavaScript, CSS, HTML</p>
+      </div>
+      <!-- Модальное окно для проекта 4 -->
+      <div id="modal4" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeModal('modal4')">&times;</span>
+          <h2>Project 4 (подробности)</h2>
+          <p>Более детальное описание, ссылки, скриншоты и т. д.</p>
+        </div>
+      </div>
+
+      <!-- Карточка 5 -->
+      <div class="project-card" onclick="openModal('modal5')">
+        <img src="img/Game.png" alt="Project 5" />
+        <h3>Motion Input game</h3>
+        <p>Comming soon...</p>
+      </div>
+      <!-- Модальное окно для проекта 5 -->
+      <div id="modal5" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeModal('modal5')">&times;</span>
+          <h2>Project 5 (подробности)</h2>
+          <p>Более детальное описание, ссылки, скриншоты и т. д.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+
+  <!-- Секция "Контакты" -->
+  <section id="contact" class="container">
+    <h2>SOCIALS</h2>
+    <p>Feel free to reach out on my socials!</p>
+    <div class="social-links">
+      <a href="https://t.me/trihanpil" target="_blank">Telegram</a>
+      <a href="https://www.instagram.com/trihanpil?igsh=ejllOWJzYTd0cTY0&utm_source=qr" target="_blank">Instagram</a>
+      <a href="https://linkedin.com/in/kate-baleiko-a26447230" target="_blank">LinkedIn</a>
+    </div>
+  </section>
+
+  <section id="contact" class="container">
+    <h2>CONTACT BY EMAIL</h2>
+
+    <!-- Обратите внимание: action="https://formsubmit.co/ВАШ_EMAIL" -->
+    <form action="mailto:rita15062425@icloud.com" method="POST" enctype="text/plain">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" placeholder="Your Message" required></textarea>
+      <button type="submit">SEND</button>
+    </form>
+  </section>
+
+  <!-- Подвал -->
+  <footer>
+    <p>© 2025 Retro Portfolio. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Скрипты -->
+  <script src="script.js"></script>
+</body>
+
+</html>
