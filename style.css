@@ -20,6 +20,20 @@ html {
   margin: 0 auto;
 }
 
+.retro-paragraph {
+  font-family: 'VT323', monospace;
+  /* шрифт для больших текстов */
+  font-size: 1.5rem;
+  /* чуть крупнее, чем 0.8 */
+  line-height: 1;
+  /* больше межстрочный интервал */
+  color: #ccc;
+  /* мягкий белый (пример) */
+  text-align: justify;
+  /* выравнивание по ширине (если нужно) */
+  /* Можно добавить padding/margin, если хотите */
+}
+
 /* АНИМИРОВАННЫЙ ФОН: ЗВЁЗДНОЕ ПОЛЕ */
 #starfield,
 #starfield2 {
@@ -182,6 +196,114 @@ nav ul li a {
 
 nav ul li a:hover {
   color: #0ff;
+}
+
+/* --- Бургер-кнопка --- */
+.burger {
+  width: 30px;
+  height: 20px;
+  display: none;
+  /* скрываем на десктопе, покажем на мобильном */
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.burger span {
+  display: block;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* Состояние .open (когда бургер превращается в "крестик") */
+.burger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.burger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.burger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* --- Навигация (десктоп) --- */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #fff;
+  transition: color 0.3s;
+}
+
+nav ul li a:hover {
+  color: #0ff;
+}
+
+/* --- Адаптивное поведение (мобильные экраны) --- */
+@media (max-width: 768px) {
+
+  /* Показываем бургер */
+  .burger {
+    display: flex;
+  }
+
+  /* Прячем старую горизонтальную навигацию */
+  nav ul {
+    display: none;
+    /* скрываем на мобильных, вместо этого используем выезжающее меню */
+  }
+
+  /* Мобильное меню (выезжающий блок) */
+  #navMenu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 200px;
+    height: 100%;
+    background: #111;
+    transform: translateX(100%);
+    /* скрыто за правым краем */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    /* изначально прозрачное */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+
+  /* Когда меню активно */
+  #navMenu.active {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  /* Стили списка в мобильном меню */
+  #navMenu ul {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  #navMenu ul li a {
+    color: #fff;
+    font-size: 1rem;
+    text-decoration: none;
+  }
+
+  #navMenu ul li a:hover {
+    color: #0ff;
+  }
 }
 
 /* ГЛИЧ-ЭФФЕКТ ДЛЯ ЛОГОТИПА */
@@ -402,7 +524,7 @@ nav ul li a:hover {
 
 /* СЕКЦИЯ "ОБО МНЕ" */
 #about {
-  padding: 100px 0;
+  padding-top: 100px;
   text-align: center;
 }
 
@@ -418,6 +540,113 @@ nav ul li a:hover {
   line-height: 1.6;
   font-size: 0.8rem;
 }
+
+/* Общий отступ между секциями */
+.resume-section {
+  padding: 30px 20px;
+  /* можно варьировать */
+  text-align: center;
+  /* заголовок по центру, контент можно выравнивать иначе */
+}
+
+/* Заголовок секции (About, Education, etc.) */
+.resume-section h2 {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: #0ff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding-left: 10px;
+  display: inline-block;
+}
+
+/* Контент в About (просто абзацы) */
+.resume-content p {
+  max-width: 700px;
+  margin: 0 auto 15px auto;
+  line-height: 1.6;
+  font-size: 0.8rem;
+  text-align: left;
+  /* или justify, если хотите */
+  color: #fff;
+}
+
+/* Контейнер для «карточек» (Education, Experience) */
+.resume-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  /* чтобы карточки были по центру */
+}
+
+/* Стили «карточки» */
+.resume-card {
+  background: #111;
+  /* тёмный фон */
+  border: 2px solid #0ff;
+  /* неоновая рамка */
+  border-radius: 8px;
+  width: 100%;
+  max-width: 700px;
+  /* ширина карточки */
+  padding: 20px;
+  text-align: left;
+  color: #fff;
+  transition: transform 0.3s;
+  position: relative;
+}
+
+/* Ховер-эффект для карточки */
+.resume-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+/* Заголовок в карточке */
+.resume-card h3 {
+  margin-bottom: 5px;
+  font-size: 1rem;
+  color: #ff00ff;
+}
+
+/* Дата/период */
+.date-range {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 0.7rem;
+  color: #ccc;
+}
+
+/* Текст в карточке */
+.resume-card p {
+  font-size: 0.8rem;
+  line-height: 1.4;
+  margin-bottom: 0;
+  color: #ccc;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .resume-section {
+    padding: 40px 10px;
+  }
+
+  .resume-section h2 {
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+
+  .resume-card h3 {
+    font-size: 0.9rem;
+  }
+
+  .resume-card p,
+  .resume-content p {
+    font-size: 0.7rem;
+  }
+}
+
 
 /* СЕКЦИЯ "ПРОЕКТЫ" */
 /* Контейнер модалки (скрыт по умолчанию) */
@@ -443,11 +672,17 @@ nav ul li a:hover {
   margin: 10% auto;
   padding: 20px;
   border: 2px solid #0ff;
-  width: 80%;
-  max-width: 600px;
+  width: 90%;
+  /* или 80%, если нужно */
+  max-width: 700px;
+  /* увеличиваем максимум */
   position: relative;
   border-radius: 8px;
   color: #fff;
+}
+
+.modal-content p {
+  text-align: left;
 }
 
 /* Кнопка "×" для закрытия */

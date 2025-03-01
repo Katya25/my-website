@@ -8,6 +8,9 @@
 
   <!-- Подключаем ретро-шрифт -->
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+
+
 
   <!-- Стили -->
   <link rel="stylesheet" href="style.css" />
@@ -24,12 +27,22 @@
       <div class="logo glitch" data-text="KATE BALEIKO">
         KATE BALEIKO
       </div>
-      <ul>
-        <li><a href="#hero">HOME</a></li>
-        <li><a href="#about">ABOUT</a></li>
-        <li><a href="#projects">PROJECTS</a></li>
-        <li><a href="#contact">CONTACT</a></li>
-      </ul>
+      <!-- Кнопка "бургер" -->
+      <div class="burger" id="burgerBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <!-- Навигация -->
+      <nav id="navMenu">
+        <ul>
+          <li><a href="#hero">HOME</a></li>
+          <li><a href="#about">ABOUT</a></li>
+          <li><a href="#projects">PROJECTS</a></li>
+          <li><a href="#contact">CONTACT</a></li>
+        </ul>
+      </nav>
     </nav>
   </header>
 
@@ -38,8 +51,9 @@
     <!-- Ваш существующий блок с текстом -->
     <div class="hero-content">
       <h1 class="typewriter" id="typewriter"></h1>
-      <p class="subtitle">Front-End Dev • Pixel Art Lover • Retro Enthusiast</p>
-      <a href="#projects" class="btn-press-start">PRESS START</a>
+      <p class="subtitle">UCL CS Student • Software Developer (Java/Python/C#) • Passionate About Digital Art & Game
+        Development</p>
+      <a href="#projects" class="btn-press-start">PROJECTS</a>
     </div>
 
 
@@ -58,22 +72,82 @@
 
 
   <!-- Секция "Обо мне" -->
-  <section id="about" class="container">
+  <!-- About Me -->
+  <section id="about" class="resume-section">
     <h2>ABOUT ME</h2>
-    <p style="text-align: justify;">
-      I love Vovochka I love VovochkaI love Vovochka I love Vovochka I love Vovochka I love Vovochka I love Vovochka I
-      love Vovochka I love Vovochka I love VovochkaI love Vovochka I love Vovochka I love Vovochka I love Vovochka I
-      love Vovochka I love Vovochka I love Vovochka I love VovochkaI love Vovochka I love Vovochka I love Vovochka I
-      love Vovochka I love Vovochka I love Vovochka
-
-      <br><br>I love Vovochka I love VovochkaI love Vovochka I love Vovochka I love Vovochka I love Vovochka I love
-      Vovochka I love VovochkaI love Vovochka I love VovochkaI love Vovochka I love Vovochka I love Vovochka I love
-      Vovochka I love Vovochka I love Vovochka
-
-      <br><br>I love Vovochka I love VovochkaI love Vovochka I love Vovochka I love Vovochka I love Vovochka I love
-      Vovochka I love Vovochka
-    </p>
+    <div class="resume-content" class="retro-paragraph">
+      <p>
+        I'm passionate about everything related to Computer Science especially coding. But I'll be honest, I didn't fall
+        in love with programming at first sight. Since I started watching the CS50 course at age 12 and I completely
+        failed. But a year later I returned to programming, but in C#, and since then the laptop has been my best
+        friend.
+      </p>
+      <p>
+        <br><br>Studying at 2 unis, playing lots of sports (used to be a professional sportsman for 8 years) and open to
+        all opportunities and everything new.
+      </p>
+      <p>
+        <br><br>I absolutely adore dogs, green colour and a smell of smoked fish.
+      </p>
+    </div>
   </section>
+
+  <!-- Education -->
+  <section id="education" class="resume-section">
+    <h2>EDUCATION</h2>
+    <div class="resume-cards">
+      <div class="resume-card">
+        <h3>UCL (University College London)</h3>
+        <span class="date-range">09/2023 - 06/2026</span>
+        <p>BSc Computer Science: 2:1</p>
+      </div>
+      <div class="resume-card">
+        <h3>Dnipro University of Technology</h3>
+        <span class="date-range">09/2022 - 06/2026</span>
+        <p>BSc Systems Analysis: 1st class</p>
+        <p>Merit-based scholarship for academic excellence (Year 1 & 2)</p>
+      </div>
+      <div class="resume-card">
+        <h3>Dnipro University of Technology</h3>
+        <span class="date-range">09/2022 - 07/2023</span>
+        <p>IB (International Baccalaureate): 96/100</p>
+        <p>Merit-based scholarship for academic excellence</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Work Experience -->
+  <section id="experience" class="resume-section">
+    <h2>WORK EXPERIENCE</h2>
+    <div class="resume-cards">
+      <div class="resume-card">
+        <h3>Spring Intern, Bloomberg</h3>
+        <span class="date-range">03/2024 - 04/2024</span>
+        <p>
+          Upon completing the internship, I was assigned a mentor for the entire summer.
+          They helped me prepare for interviews, and we had regular mock interview sessions
+          covering both technical topics and system design.
+        </p>
+      </div>
+      <div class="resume-card">
+        <h3>Programming and Math Tutor</h3>
+        <span class="date-range">09/2022 - 05/2023</span>
+        <p>
+          Helped prepare for GCSEs as well as the Ukrainian equivalent of A-Levels.
+        </p>
+      </div>
+      <div class="resume-card">
+        <h3>Unity Developer</h3>
+        <span class="date-range">2019 - 2021</span>
+        <p>
+          I developed small applications and published them on Google Play, integrating monetization
+          through Google Ads. One of my apps received nearly 600,000 visits to its page, while some
+          others reached over 100,000 views. Additionally, I created most of the graphics myself.
+        </p>
+      </div>
+    </div>
+  </section>
+
 
   <!-- Секция "Проекты" -->
   <section id="projects" class="container">
@@ -89,9 +163,21 @@
       <div id="modal1" class="modal">
         <div class="modal-content">
           <span class="close" onclick="closeModal('modal1')">&times;</span>
-          <h2>Project 1 (подробности)</h2>
-          <p>Здесь можно разместить более детальное описание,
-            технологии, ссылки, скриншоты и т. д.</p>
+          <h2>Jamboxx Infinite</h2>
+          <div class="retro-paragraph">
+            <p>
+              Jamboxx Infinite - AI Music for Everyone
+              <br><br>🎵 AI-powered music education for people with disabilities
+
+              <br><br>Jamboxx Infinite is an accessible music-learning platform featuring AI-driven tools
+              (AI teacher and voice clomming), interactive mini-games, and virtual motionn input instruments.
+              Designed for inclusivity, it helps users of all abilities develop musical skills.
+
+              <br><br>💻 My Role: Team Lead | Full-Stack Developer | UI/UX Designer
+              <br><br>🚀 I showcased this project at the World's Largest EdTech Conference - Bett 2025 (30,000+
+              attendees)
+            </p>
+          </div>
         </div>
       </div>
 
@@ -105,8 +191,27 @@
       <div id="modal2" class="modal">
         <div class="modal-content">
           <span class="close" onclick="closeModal('modal2')">&times;</span>
-          <h2>Project 2 (подробности)</h2>
-          <p>Более детальное описание, ссылки, скриншоты и т. д.</p>
+          <h2>Student Grade Management</h2>
+          <div class="retro-paragraph">
+            <p>💻 Java Spring Boot, React
+
+              <br>A group project developed at UCL as part of a software engineering module. I worked as a Full-Stack
+              Developer and UI/UX Designer, contributing to both backend and frontend development.
+
+              <br><br>Key Features:
+              <br>✅ Built with Java Spring Boot (backend) and React (frontend)
+              <br>✅ Achieved 100% test coverage ensuring robust functionality
+              <br>✅ Implemented comprehensive JavaDoc documentation
+              <br>✅ Designed an intuitive and visually refined UI
+
+              <br><br>🚀 Professor’s Feedback: "One of the best UI extensions I’ve seen so far!"
+              🎯 Final UCL Score: 91/100
+
+              <br><br>This project showcased my ability to develop a scalable full-stack application, maintain high code
+              quality,
+              and design user-friendly interfaces.
+            </p>
+          </div>
         </div>
       </div>
 
@@ -120,9 +225,24 @@
       <div id="modal3" class="modal">
         <div class="modal-content">
           <span class="close" onclick="closeModal('modal3')">&times;</span>
-          <h2>Project 3 (подробности)</h2>
-          <p>Здесь можно разместить более детальное описание,
-            технологии, ссылки, скриншоты и т. д.</p>
+          <h2>Bioreactor Control System</h2>
+          <div class="retro-paragraph">
+            <p>
+              🛠 Arduino | Embedded Systems | IoT
+
+              <br>A collaborative project between Computer Science (CS) and Electrical & Electronic Engineering (EEE)
+              students, aimed at developing a remotely monitored and controlled bioreactor system.
+
+              <br><br>📌 Key Contributions & Technologies:
+              <br>✅ Designed, developed, and tested the system’s hardware and software
+              <br>✅ Implemented Arduino-based control for stirring, pH, and heating subsystems
+              <br>✅ Integrated I2C connectivity for seamless communication between components
+              <br>✅ Developed a user interface for remote monitoring and parameter adjustments
+
+              <br><br>🚀 This project demonstrated my ability to work across disciplines, combining software development
+              with embedded systems and real-time hardware control.
+            </p>
+          </div>
         </div>
       </div>
 
@@ -136,8 +256,10 @@
       <div id="modal4" class="modal">
         <div class="modal-content">
           <span class="close" onclick="closeModal('modal4')">&times;</span>
-          <h2>Project 4 (подробности)</h2>
-          <p>Более детальное описание, ссылки, скриншоты и т. д.</p>
+          <h2>This website</h2>
+          <div class="retro-paragraph">
+            <p>You can see everything :)</p>
+          </div>
         </div>
       </div>
 
@@ -151,8 +273,12 @@
       <div id="modal5" class="modal">
         <div class="modal-content">
           <span class="close" onclick="closeModal('modal5')">&times;</span>
-          <h2>Project 5 (подробности)</h2>
-          <p>Более детальное описание, ссылки, скриншоты и т. д.</p>
+          <h2>Motion Input game</h2>
+          <div class="retro-paragraph">
+            <p>Pixel by pixel, it's coming to life.
+              <br><br>> FILE LOADING... ███████░░░ 72%
+            </p>
+          </div>
         </div>
       </div>
 
@@ -186,7 +312,7 @@
 
   <!-- Подвал -->
   <footer>
-    <p>© 2025 Retro Portfolio. All Rights Reserved.</p>
+    <p>© 2025 Kate's Portfolio. All Rights Reserved.</p>
   </footer>
 
   <!-- Скрипты -->

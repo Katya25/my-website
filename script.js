@@ -1,5 +1,5 @@
 // Эффект "печатной машинки" (typewriter) для заголовка #typewriter
-const text = "HELLO, I'M YOUR RETRO DEV!";
+const text = "HEY THERE, I AM KATE!";
 const speed = 100; // Скорость печати (мс)
 let i = 0;
 
@@ -57,6 +57,28 @@ window.addEventListener("scroll", function () {
   document.getElementById("layer5").style.transform =
     `translateY(${scrollTop * 0.05}px)`;
 });
+
+
+//Бургер меню
+const burgerBtn = document.getElementById("burgerBtn");
+const navMenu = document.getElementById("navMenu");
+
+// Открытие/закрытие меню при клике на бургер
+burgerBtn.addEventListener("click", () => {
+  burgerBtn.classList.toggle("open");   // анимация "X"
+  navMenu.classList.toggle("active");   // выезд меню
+});
+
+// Закрывать меню при клике на ссылку
+const navLinks = document.querySelectorAll("#navMenu a");
+navLinks.forEach(link => {
+  link.addEventListener("click", () => {
+    // убираем классы
+    burgerBtn.classList.remove("open");
+    navMenu.classList.remove("active");
+  });
+});
+
 
 
 // Простейшая обработка формы
